@@ -1,0 +1,53 @@
+    body{
+        background-color: #ffeead;
+    }
+
+    /*By Class*/
+
+    .nested-row {
+        margin: 20px;
+    }
+
+    .btn-beauty {
+        color: #fff;
+        background-color: #008080;
+        border-color: black;
+        width: 90%;
+        height: 34px;
+        text-align: center;
+        align-items: center;
+        font-size: 15px;
+        float: right;
+    }
+    /*By id*/
+
+    #div-search {
+        margin-top: 70px;
+        background-color: #88d8b0;
+    }
+
+    #div-title {
+        margin-top: 20px;
+    }
+
+    #searchCol {
+        float: right;
+    }
+
+    #data-table{
+        visibility: hidden;
+    }
+    #table-body{
+        background-color: #96ceb4;
+        font-family: 'Gudea';
+        font-size: 20px;
+    }
+    #table-head{
+        background-color: #ff6f69;
+        font-size: 20px;
+        font-family: 'Cabin Condensed';
+    }
+    #not-found{
+        font-size: 40px;
+        font-family: 'Cabin Condensed';
+    }

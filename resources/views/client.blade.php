@@ -10,41 +10,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Gudea" rel="stylesheet">
+
+    <link href="{{asset('css/client.css')}}" media="all" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{{ asset('js/client.js') }}"></script>
+
 </head>
-
-<style>
-    /*By Class*/
-
-    .nested-row {
-        margin: 20px;
-    }
-
-    .btn-beauty {
-        color: #fff;
-        background-color: #008080;
-        border-color: black;
-        width: 90%;
-        height: 34px;
-        text-align: center;
-        align-items: center;
-        font-size: 15px;
-        float: right;
-    }
-    /*By id*/
-
-    #div-search {
-        margin-top: 70px;
-        background-color: mediumpurple;
-    }
-
-    #div-title {
-        margin-top: 20px;
-    }
-
-    #searchCol {
-        float: right;
-    }
-</style>
 
 <body>
 
@@ -103,14 +74,26 @@
 
         </div>
 
-        <div id="div-content">
 
+        <div id="div-content">
+            <table class="table" id="data-table">
+                <thead id="table-head">
+                    <tr>
+                        <th>Description</th>
+                        <th>Address</th>
+                        <th>Zip Code</th>
+                        <th>City</th>
+                        <th>Distance</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
 
 <script type=text/javascript>
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -121,28 +104,6 @@
         $("#btndistance:first-child").text($(this).text());
         $("#btndistance:first-child").val($(this).val());
     });
-
-
-    function sendRequest() {
-        var title = document.getElementById("inputTitle").value;
-        console.log(title);
-
-        $.ajax({
-            method: 'POST',
-            url: '/getSelectedServices',
-            data: {
-                'title': title
-            },
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
-
-    }
 </script>
 
 

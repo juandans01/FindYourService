@@ -22,10 +22,10 @@ class AdminController extends Controller{
 
         $service=new Service;
         $service->title="peluqueria";
-        $service->description="para cortar pelo";
-        $service->address="Santa fe 334";
+        $service->description="para cortar barba";
+        $service->address="Callao 123";
         $service->city="CABA";
-        $service->zip_code="1212";
+        $service->zip_code="12143";
         $service->geo_lat=1234.12;
         $service->geo_long=4321.21;
         $service->save();
