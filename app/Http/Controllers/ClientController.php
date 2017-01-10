@@ -14,11 +14,40 @@ class ClientController extends Controller{
 
 
     public function getSelectedData(Request $request){
-        $title=$request->input('title');
-        Log::info($title);
+        $filter_title=$request->input('title');
+        $filter_lat=-$request->input('latitude');
+        $filter_lat_two=$request->input('latitude');
+        $filter_long=$request->input('longitude');
+        $max_distance=$request->input('max_distance');
 
-        $services=Service::where('title',$title)->get();
+
+
+
+        //$services=Service::where('title',$title)->get();
+
+
+
+
+
+
+        $services=DB::select(
+            DB::raw("select *, (6371 * acos(cos(radians(:filter_lat) )
+				* cos(radians(geo_lat) )
+				* cos(radians(geo_long)
+				- radians(:filter_long))
+				+ sin(radians(:filter_lat_two))
+				* sin(radians(geo_lat)) ) )
+				AS distance
+                from services
+                where title=:filter_title
+                having distance <:max_distance
+                order by distance; ")
+            ,array('filter_lat' => $filter_lat, 'filter_long' => $filter_long, 'max_distance' => $max_distance, 'filter_title' => $filter_title, 'filter_lat_two' => $filter_lat_two )
+        );
+
+
         Log::info($services);
+
 
         return $services;
     }

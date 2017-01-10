@@ -7,13 +7,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Gudea" rel="stylesheet">
 
     <link href="{{asset('css/client.css')}}" media="all" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="{{ asset('js/client.js') }}"></script>
 
 </head>
 
@@ -49,7 +45,7 @@
 
             <div class="row nested-row">
                 <div class="col-md-3" id="searchCol">
-                    <div class="btn btn-beauty" onclick="sendRequest()">Search</div>
+                    <div class="btn btn-beauty" id="search-btn">Search</div>
                 </div>
                 <div class="col-xs-1">
 
@@ -93,18 +89,20 @@
     </div>
 </body>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ asset('js/client.js') }}"></script>
+
 <script type=text/javascript>
+    //set the csrf token
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    $("#distance li a").click(function () {
-        $("#btndistance:first-child").text($(this).text());
-        $("#btndistance:first-child").val($(this).val());
-    });
 </script>
+
+
 
 
 

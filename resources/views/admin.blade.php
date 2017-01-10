@@ -10,20 +10,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Gudea" rel="stylesheet">
+    <link href="{{asset('css/admin.css')}}" media="all" rel="stylesheet" type="text/css" />
 
 </head>
-
-<style type="text/css">
-    #options {
-        min-width: 20px;
-    }
-</style>
 
 <body>
     <div class="container-fluid">
         <div id="menu-div">
 
+            <button type="button" class="btn btn-default" id="new-btn">New Service</button>
         </div>
         <div id="data-div">
             <table class="table" id="data-table">

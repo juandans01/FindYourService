@@ -1,0 +1,12 @@
+#options {
+    min-width: 20px;
+}
+
+#menu-div{
+    min-height: 50px;
+    margin-top: 30px;
+}
+#new-btn{
+    float:right;
+    margin-right: 30px;
+}

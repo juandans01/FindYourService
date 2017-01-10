@@ -21,8 +21,8 @@ class CreateServiceTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('zip_code');
-            $table->float('geo_lat');
-            $table->float('geo_long');
+            $table->decimal('geo_lat',8,4);
+            $table->decimal('geo_long',8,4);
         });
     }
 
