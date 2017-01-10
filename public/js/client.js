@@ -2,8 +2,6 @@
 
     $("#search-btn").click(sendRequest);
 
-
-
     $("#distance li a").click(function () {
         $("#btndistance:first-child").text($(this).text());
         $("#btndistance:first-child").val($(this).val());
@@ -13,39 +11,25 @@
     function sendRequest() {
 
         var title = $("#inputTitle").val();
-        console.log(title);
-        console.log("pase title");
 
         var latitude = $("#inputLat").val();
-        console.log(latitude);
-        console.log("pase latitude");
 
         var longitude = $("#inputLong").val();
-        console.log(longitude);
-        console.log("pase longitude");
 
-        var maxDistance = $("#btndistance").text();
-        console.log(maxDistance);
+        var maxDistance = $("#btndistance").text().trim();
 
         if (maxDistance == "Anywhere") {
+            maxDistance=20048;
             console.log(maxDistance);
-        }
-
-        if(maxDistance == "Distance"){
+        }else if(maxDistance == "Distance"){
+            maxDistance=0;
             console.log(maxDistance);
         }else{
-
             var numberFormat = /\d+/g;
             var numbersArray = maxDistance.match(numberFormat);
-            var firstNumber = numbersArray[0];
-            console.log(firstNumber);
-
+            maxDistance = numbersArray[0];
+            console.log(maxDistance + "<- maxDistance");
         }
-
-
-
-
-        console.log("pase distance");
 
 
 

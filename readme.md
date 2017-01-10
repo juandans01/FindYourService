@@ -1,40 +1,39 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## Installation steps
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+The first thing you should do is set the database connection parameters:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#### In config/database.php 
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+* Go to 'connections'
+    * to 'mysql'
+        * in 'database' => env('DB_DATABASE', 'database_example') set the parameter "database_example" as the name of your database
+        * in 'username' => env('DB_USERNAME', 'user_example'), set the parameter "user_example" as the user of your "MySQL" enviroment
+        * in 'password' => env('DB_PASSWORD', 'pass_example'), set the parameter "pass_example" as the password of your "MySQL" enviroment
 
-## Learning Laravel
+#### In /.env
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+ * set the "DB_DATABASE" variable as the name of your database
+ * set the "DB_USERNAME" variable as the user of your "MySQL" enviroment
+ * set the "DB_PASSWORD" variable as the password of your "MySQL" enviroment
+ 
+#### In /.env.example
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+* set the "DB_DATABASE" variable as the name of your database
+* set the "DB_USERNAME" variable as the user of your "MySQL" enviroment
+* set the "DB_PASSWORD" variable as the password of your "MySQL" enviroment
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Starting laravel
 
-## Security Vulnerabilities
+Once setted the database configuration you should open a command prompt on the root of laravel folder and type : "php artisan serve"
+this will start the local server
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Migrating database
 
-## License
+Once started the server you can use the migrate functionality of Laravel to set the tables you are going to use for this project
+open a new command prompt on the root folder of laravel and type "php artisan migrate" and done! 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
