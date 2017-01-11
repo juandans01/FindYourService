@@ -14,11 +14,6 @@
 </head>
 
 <body>
-
-    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-        <a class="navbar-brand" href="#">Find your Service!</a>
-    </nav>
-
     <div class="container-fluid">
         <div class="jumbotron" id="div-search">
             <div class="row nested-row" id="div-title">

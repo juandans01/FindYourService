@@ -1,80 +1,59 @@
-<html>
+@extends('layouts.app') @section('content')
+<div class="container-fluid">
+    <div id="menu-div">
 
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new-service" id="new-btn">New Service</button>
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <link href="{{asset('css/admin.css')}}" media="all" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-    <div class="container-fluid">
-        <div id="menu-div">
-
-            <button type="button" class="btn btn-default" id="new-btn">New Service</button>
-        </div>
-        <div id="data-div">
-            <table class="table" id="data-table">
-                <thead id="table-head">
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Address</th>
-                        <th>Zip Code</th>
-                        <th>City</th>
-                        <th>Lat</th>
-                        <th>Long</th>
-                        <th id=options></th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                </tbody>
-            </table>
+    </div>
+    <div id="data-div">
+        <table class="table" id="data-table">
+            <thead id="table-head">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Address</th>
+                    <th>Zip Code</th>
+                    <th>City</th>
+                    <th>Lat</th>
+                    <th>Long</th>
+                    <th id=options></th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="new-service" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">New Service</h4>
+            </div>
+            <div class="modal-body">
+                <p>Title</p>
+                <input type="text" class="form-control" id="input-title">
+                <p>Description</p>
+                <input type="text" class="form-control" id="input-desc">
+                <p>Address</p>
+                <input type="text" class="form-control" id="input-address">
+                <p>City</p>
+                <input type="text" class="form-control" id="input-city">
+                <p>Zip Code</p>
+                <input type="text" class="form-control" id="input-zip" >
+                <p>Latitude</p>
+                <input type="text" class="form-control" id="input-lat" >
+                <p>Longitude</p>
+                <input type="text" class="form-control" id="input-long">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="submit-service">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
         </div>
     </div>
-
-</body>
-
-<script type="text/javascript">
-    var services = <?php echo json_encode($services); ?>;
-    var i = 0;
-    for (i; i < services.length; i++) {
-
-        var tableRow = $("<tr></tr>");
-
-        var title = $("<td></td>").text(services[i].title);
-        tableRow.append(title);
-
-        var description = $("<td></td>").text(services[i].description);
-        tableRow.append(description);
-
-        var address = $("<td></td>").text(services[i].address);
-        tableRow.append(address);
-
-        var zip_code = $("<td></td>").text(services[i].zip_code);
-        tableRow.append(zip_code);
-
-        var city = $("<td></td>").text(services[i].city);
-        tableRow.append(city);
-
-        var geo_lat = $("<td></td>").text(services[i].geo_lat);
-        tableRow.append(geo_lat);
-
-        var geo_long = $("<td></td>").text(services[i].geo_long);
-        tableRow.append(geo_long);
-
-        var btns= $("<td></td>").text("btn btn");
-        tableRow.append(btns);
-
-        $("#table-body").append(tableRow);
-    }
-</script>
-
-</html>
+</div>
+@endsection

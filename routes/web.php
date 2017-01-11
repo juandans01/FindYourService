@@ -23,6 +23,10 @@ Route::get('/client',function(){
 
 Route::get('/admin','AdminController@welcome');
 
-Route::get('/testInsert','AdminController@insertData');
+Route::post('insertData','AdminController@insertData');
 
 Route::post('getSelectedServices','ClientController@getSelectedData');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

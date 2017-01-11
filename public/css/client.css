@@ -5,7 +5,7 @@
     /*By Class*/
 
     .nested-row {
-        margin: 20px;
+        margin: 10px;
     }
 
     .btn-beauty {
@@ -22,7 +22,7 @@
     /*By id*/
 
     #div-search {
-        margin-top: 70px;
+        margin-top: 20px;
         background-color: #88d8b0;
     }
 

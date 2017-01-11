@@ -21,15 +21,6 @@ class ClientController extends Controller{
         $max_distance=$request->input('max_distance');
 
 
-
-
-        //$services=Service::where('title',$title)->get();
-
-
-
-
-
-
         $services=DB::select(
             DB::raw("select *, (6371 * acos(cos(radians(:filter_lat) )
 				* cos(radians(geo_lat) )
