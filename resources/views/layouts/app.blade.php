@@ -11,8 +11,17 @@
 
     <title>{{ config('app.name', 'Find Your Service') }}</title>
 
+
+
     <!-- Styles -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <link href="/css/app.css" rel="stylesheet">
+
+    <link href="{{asset('css/admin.css')}}" media="all" rel="stylesheet" type="text/css" />
+
 
 
     <!-- Scripts -->
@@ -22,6 +31,15 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
 </head>
 
 <body>
@@ -82,32 +100,16 @@
         </nav>
 
         @yield('content')
+
+        <!--div id="services-div"><!--?php echo json_encode($services) ?></div-->
+        <div id="services-div">{{$services or 'NotAdmin'}}</div>
+
     </div>
 
     <!-- Scripts -->
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
-
-    <script type="text/javascript">
-
-        //set the csrf token
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        var skipSelect = "skipSelect";
-        var services = {!! $services or 'skipSelect'!!}
-        console.log(services);
-        getAllRows();
-
-
-
-    </script>
 
 </body>
 

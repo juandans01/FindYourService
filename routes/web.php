@@ -23,7 +23,13 @@ Route::get('/client',function(){
 
 Route::get('/admin','AdminController@welcome');
 
+Route::get('getData','AdminController@getData');
+
 Route::post('insertData','AdminController@insertData');
+
+Route::post('deleteRow','AdminController@deleteRow');
+
+Route::post('updateRow','AdminController@updateRow');
 
 Route::post('getSelectedServices','ClientController@getSelectedData');
 

@@ -21,12 +21,17 @@ class AdminController extends Controller{
     public function welcome(){
 
         $services=Service::all();
-        Log::info("in welcome");
         return View::make('admin',['services'=>$services]);
     }
 
+    public function getData(){
+        $services=Service::all();
+
+        return $services;
+
+    }
+
     public function insertData(Request $request){
-        Log::info("in insertData");
          try{
 
             $service=new Service;
@@ -45,6 +50,26 @@ class AdminController extends Controller{
              Log::info($ex);
         }
 
+
+    }
+
+    public function deleteRow(Request $request){
+
+        $deletedRows=Service::where('id',$request->input('id'))->delete();
+        Log::info($deletedRows+"<-Deleted rows");
+    }
+
+    public function updateRow(Request $request){
+        $service=Service::find($request->input('id'));
+
+        $service->title= $request->input('title');
+        $service->description= $request->input('description');
+        $service->address= $request->input('address');
+        $service->city= $request->input('city');
+        $service->zip_code= $request->input('zip_code');
+        $service->geo_lat= $request->input('latitude');
+        $service->geo_long= $request->input('longitude');
+        $service->save();
 
     }
 }

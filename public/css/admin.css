@@ -1,12 +1,23 @@
+.btn-update{
+    margin-left: 5px;
+}
+
 #options {
     min-width: 20px;
 }
 
 #menu-div{
     min-height: 50px;
-    margin-top: 30px;
+}
+#services-div{
+            visibility: hidden;
+}
+#row-id{
+    visibility: hidden;
+}
+#id-thead{
+    visibility: hidden;
 }
 #new-btn{
-    float:right;
-    margin-right: 30px;
+    margin-left: 30px;
 }
