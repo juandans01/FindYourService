@@ -1,29 +1,16 @@
-    body{
-        background-color: #ffeead;
+    body {
+        background-color: #fbf5f5;
     }
-
     /*By Class*/
 
     .nested-row {
         margin: 10px;
     }
-
-    .btn-beauty {
-        color: #fff;
-        background-color: #008080;
-        border-color: black;
-        width: 90%;
-        height: 34px;
-        text-align: center;
-        align-items: center;
-        font-size: 15px;
-        float: right;
-    }
     /*By id*/
 
     #div-search {
         margin-top: 20px;
-        background-color: #88d8b0;
+        background-color: #0fb6a9;
     }
 
     #div-title {
@@ -34,20 +21,37 @@
         float: right;
     }
 
-    #data-table{
+    #data-table {
         visibility: hidden;
     }
-    #table-body{
-        background-color: #96ceb4;
+
+    #table-body {
+        background-color: #ff6f69;
         font-family: 'Gudea';
         font-size: 20px;
     }
-    #table-head{
-        background-color: #ff6f69;
+
+    #table-head {
+        background-color: #0fb6a9;
         font-size: 20px;
         font-family: 'Cabin Condensed';
     }
-    #not-found{
+
+    #not-found {
         font-size: 40px;
         font-family: 'Cabin Condensed';
+    }
+
+    #client-nav {
+        background-color: #0fb6a9;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    #link-nav {
+        float: right;
+        color: black;
+    }
+
+    #title-nav {
+        color: black;
     }

@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Gudea" rel="stylesheet">
     <link href="{{asset('css/client.css')}}" media="all" rel="stylesheet" type="text/css" />
 
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
     <!-- Scripts -->
 

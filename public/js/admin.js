@@ -1,7 +1,8 @@
 (function ($) {
 
-    $(document).ready(function () {
 
+
+    $(document).ready(function () {
         if ($("#services-div").text() != "NotAdmin") {
 
             //set the csrf token
@@ -79,10 +80,10 @@
 
     });
 
-
+    //Update row
     $("#upd-submit-service").click(function () {
 
-        var inId=$("#upd-id").text();
+        var inId = $("#upd-id").text();
         console.log(inId)
         var inTitle = $("#upd-input-title").val();
         var inDesc = $("#upd-input-desc").val();
