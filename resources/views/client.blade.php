@@ -1,20 +1,8 @@
-<html>
-
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Gudea" rel="stylesheet">
-
-    <link href="{{asset('css/client.css')}}" media="all" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-    <div class="container-fluid">
+@extends('layouts.front') @section('content')
+<nav class="navbar navbar-light bg-faded" id="client-nav">
+  <h4 class="navbar-brand mb-0">Find Your Service</h4>
+</nav>
+<div class="container-fluid">
         <div class="jumbotron" id="div-search">
             <div class="row nested-row" id="div-title">
                 <div class="col-md-6">
@@ -82,24 +70,5 @@
             </table>
         </div>
     </div>
-</body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{{ asset('js/client.js') }}"></script>
-
-<script type=text/javascript>
-    //set the csrf token
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
-
-
-
-
-
-
-</html>
+@endsection

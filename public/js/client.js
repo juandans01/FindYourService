@@ -1,5 +1,15 @@
 (function ($) {
 
+    $(document).ready(function () {
+        //set the csrf token
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+
+
     $("#search-btn").click(sendRequest);
 
     $("#distance li a").click(function () {
@@ -19,12 +29,12 @@
         var maxDistance = $("#btndistance").text().trim();
 
         if (maxDistance == "Anywhere") {
-            maxDistance=20048;
+            maxDistance = 20048;
             console.log(maxDistance);
-        }else if(maxDistance == "Distance"){
-            maxDistance=0;
+        } else if (maxDistance == "Distance") {
+            maxDistance = 0;
             console.log(maxDistance);
-        }else{
+        } else {
             var numberFormat = /\d+/g;
             var numbersArray = maxDistance.match(numberFormat);
             maxDistance = numbersArray[0];

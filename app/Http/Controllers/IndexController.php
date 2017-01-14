@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Service;
 
-class ClientController extends Controller{
+class IndexController extends Controller{
 
 
     public function getSelectedData(Request $request){

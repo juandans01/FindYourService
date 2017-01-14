@@ -12,14 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client');
 });
 
 Route::get('/test','TestConnectionController@testConnection');
 
-Route::get('/client',function(){
-       return view('client');
-});
 
 Route::get('/admin','AdminController@welcome');
 
@@ -31,7 +28,7 @@ Route::post('deleteRow','AdminController@deleteRow');
 
 Route::post('updateRow','AdminController@updateRow');
 
-Route::post('getSelectedServices','ClientController@getSelectedData');
+Route::post('getSelectedServices','IndexController@getSelectedData');
 
 Auth::routes();
 
