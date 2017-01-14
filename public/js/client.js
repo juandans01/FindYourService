@@ -20,60 +20,77 @@
     //Sends select request with title as filter
     function sendRequest() {
 
-        var title = $("#inputTitle").val();
+        if (validateParams()) {
+            $("#error-msg").css({
+                visibility: "hidden"
+            });
+            var title = $("#inputTitle").val();
 
-        var latitude = $("#inputLat").val();
+            var latitude = $("#inputLat").val();
 
-        var longitude = $("#inputLong").val();
+            var longitude = $("#inputLong").val();
 
-        var maxDistance = $("#btndistance").text().trim();
+            var maxDistance = $("#btndistance").text().trim();
 
-        if (maxDistance == "Anywhere") {
-            maxDistance = 20048;
-            console.log(maxDistance);
-        } else if (maxDistance == "Distance") {
-            maxDistance = 0;
-            console.log(maxDistance);
-        } else {
-            var numberFormat = /\d+/g;
-            var numbersArray = maxDistance.match(numberFormat);
-            maxDistance = numbersArray[0];
-            console.log(maxDistance + "<- maxDistance");
-        }
+            if (maxDistance == "Anywhere") {
+                maxDistance = 20048;
+                console.log(maxDistance);
+            } else if (maxDistance == "Distance") {
+                maxDistance = 0;
+                console.log(maxDistance);
+            } else {
+                var numberFormat = /\d+/g;
+                var numbersArray = maxDistance.match(numberFormat);
+                maxDistance = numbersArray[0];
+                console.log(maxDistance + "<- maxDistance");
+            }
 
 
 
-        $.ajax({
-            method: 'POST',
-            url: '/getSelectedServices',
-            data: {
-                'title': title,
-                'latitude': latitude,
-                'longitude': longitude,
-                'max_distance': maxDistance
-            },
-            success: function (response) {
-                console.log(response);
+            $.ajax({
+                method: 'POST',
+                url: '/getSelectedServices',
+                data: {
+                    'title': title,
+                    'latitude': latitude,
+                    'longitude': longitude,
+                    'max_distance': maxDistance
+                },
+                success: function (response) {
+                    console.log(response);
 
-                if (response.length > 0) {
-                    setHeader();
-                    var i = 0;
-                    for (i; i < response.length; i++) {
-                        setRow(response[i]);
-                        console.log(response[i].address);
+                    if (response.length > 0) {
+                        setHeader();
+                        var i = 0;
+                        for (i; i < response.length; i++) {
+                            setRow(response[i]);
+                            console.log(response[i].address);
+                        }
+
+                    } else {
+                        setNotFoundMsg();
                     }
 
-                } else {
-                    setNotFoundMsg();
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                 }
+            });
 
+        } else {
 
-            },
-            error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
+            $("#error-msg").css({
+                visibility: "visible"
+            });
+
+            $("#table-body").empty();
+            $("#data-table").css({
+                visibility: "hidden"
+            });
+
+        }
 
     }
 
@@ -126,6 +143,29 @@
             }).text("No services available");
             $("#div-content").append(message);
         }
+
+    }
+
+
+    function validateParams() {
+        if ($("#inputTitle").val() == "") {
+            console.log("title is empty");
+            return false;
+
+        }
+        if (!$.isNumeric($("#inputLat").val())) {
+            console.log("lat is not numeric");
+            return false;
+
+        }
+        if (!$.isNumeric($("#inputLong").val())) {
+            console.log("long is not numeric");
+            return false;
+
+        }
+
+
+        return true;
 
     }
 

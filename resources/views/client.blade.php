@@ -54,7 +54,9 @@
 
     </div>
 
-
+    <div class="alert alert-danger fade in" id="error-msg">
+        <strong>Error!</strong> All fields are required, latitude and longitude must have a correct format
+    </div>
     <div id="div-content">
         <table class="table" id="data-table">
             <thead id="table-head">

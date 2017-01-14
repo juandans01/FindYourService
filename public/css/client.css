@@ -1,7 +1,13 @@
     body {
-        background-color: #fbf5f5;
+        background-color: #c4e5c1;
     }
     /*By Class*/
+
+    .has-errors {
+        border-style: solid;
+        border-color: firebrick;
+        background-color: #f8bdb3;
+    }
 
     .nested-row {
         margin: 10px;
@@ -14,7 +20,7 @@
     }
 
     #div-title {
-        margin-top: 20px;
+        margin-top: 10px;
     }
 
     #searchCol {
@@ -54,4 +60,8 @@
 
     #title-nav {
         color: black;
+    }
+
+    #error-msg {
+        visibility: hidden;
     }
