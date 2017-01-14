@@ -35,4 +35,4 @@ Route::post('getSelectedServices','ClientController@getSelectedData');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
