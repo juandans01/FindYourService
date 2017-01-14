@@ -38,22 +38,23 @@
                 <p>Title</p>
                 <input type="text" class="form-control" id="input-title">
                 <p>Description</p>
-                <input type="text" class="form-control" id="input-desc">
+                <textarea class="form-control" rows="5" id="input-desc"></textarea>
                 <p>Address</p>
                 <input type="text" class="form-control" id="input-address">
                 <p>City</p>
                 <input type="text" class="form-control" id="input-city">
                 <p>Zip Code</p>
-                <input type="text" class="form-control" id="input-zip" >
+                <input type="text" class="form-control" id="input-zip">
                 <p>Latitude</p>
-                <input type="text" class="form-control" id="input-lat" >
+                <input type="text" class="form-control" id="input-lat">
                 <p>Longitude</p>
                 <input type="text" class="form-control" id="input-long">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="submit-service">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="submit-service">Submit</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -72,15 +73,15 @@
                 <p>Title</p>
                 <input type="text" class="form-control" id="upd-input-title">
                 <p>Description</p>
-                <input type="text" class="form-control" id="upd-input-desc">
+                <textarea class="form-control" rows="5" id="upd-input-desc"></textarea>
                 <p>Address</p>
                 <input type="text" class="form-control" id="upd-input-address">
                 <p>City</p>
                 <input type="text" class="form-control" id="upd-input-city">
                 <p>Zip Code</p>
-                <input type="text" class="form-control" id="upd-input-zip" >
+                <input type="text" class="form-control" id="upd-input-zip">
                 <p>Latitude</p>
-                <input type="text" class="form-control" id="upd-input-lat" >
+                <input type="text" class="form-control" id="upd-input-lat">
                 <p>Longitude</p>
                 <input type="text" class="form-control" id="upd-input-long">
             </div>

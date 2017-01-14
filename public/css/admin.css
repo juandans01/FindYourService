@@ -21,3 +21,6 @@
 #new-btn{
     margin-left: 30px;
 }
+textarea{
+    resize: none;
+}
