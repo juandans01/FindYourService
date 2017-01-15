@@ -82,102 +82,148 @@
 
     //Update row
     $("#upd-submit-service").click(function () {
+        console.log("on click");
+        if (validateUpdateServiceEntry()) {
 
-        var inId = $("#upd-id").text();
-        console.log(inId)
-        var inTitle = $("#upd-input-title").val();
-        var inDesc = $("#upd-input-desc").val();
-        var inAddress = $("#upd-input-address").val();
-        var inCity = $("#upd-input-city").val();
-        var inZip = $("#upd-input-zip").val();
-        var inLat = $("#upd-input-lat").val();
-        var inLong = $("#upd-input-long").val();
+            console.log("pass validate");
+            $("#upd-error-msg").css({
+                visibility: "hidden"
+            });
 
 
-        $.ajax({
-            method: 'POST',
-            url: '/updateRow',
-            data: {
-                'id': inId,
-                'title': inTitle,
-                'description': inDesc,
-                'address': inAddress,
-                'city': inCity,
-                'zip_code': inZip,
-                'latitude': inLat,
-                'longitude': inLong
-            },
-            success: function (response) {
-                $.ajax({
-                    method: 'GET',
-                    url: '/getData',
-                    success: function (response) {
-                        showSelectData(response);
-                    },
-                    error: function () {
-                        console.log("get Selected data error");
-                    }
+            var inId = $("#upd-id").text();
+            console.log(inId)
+            var inTitle = $("#upd-input-title").val();
+            var inDesc = $("#upd-input-desc").val();
+            var inAddress = $("#upd-input-address").val();
+            var inCity = $("#upd-input-city").val();
+            var inZip = $("#upd-input-zip").val();
+            var inLat = $("#upd-input-lat").val();
+            var inLong = $("#upd-input-long").val();
 
-                });
-            },
-            error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
+
+            $.ajax({
+                method: 'POST',
+                url: '/updateRow',
+                data: {
+                    'id': inId,
+                    'title': inTitle,
+                    'description': inDesc,
+                    'address': inAddress,
+                    'city': inCity,
+                    'zip_code': inZip,
+                    'latitude': inLat,
+                    'longitude': inLong
+                },
+                success: function (response) {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/getData',
+                        success: function (response) {
+                            showSelectData(response);
+                        },
+                        error: function () {
+                            console.log("get Selected data error");
+                        }
+
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+
+            $('#update-service').modal('toggle');
+
+        }else {
+            $("#upd-error-msg").css({
+                visibility: "visible"
+            });
+        }
 
     });
 
     //Insert row
     $("#submit-service").click(function () {
 
-        var inTitle = $("#input-title").val();
-        console.log("Title->" + inTitle);
-        var inDesc = $("#input-desc").val();
-        var inAddress = $("#input-address").val();
-        var inCity = $("#input-city").val();
-        var inZip = $("#input-zip").val();
-        var inLat = $("#input-lat").val();
-        var inLong = $("#input-long").val();
+        if (validateNewServiceEntry()) {
 
-        $.ajax({
-            method: 'POST',
-            url: '/insertData',
-            data: {
-                'title': inTitle,
-                'description': inDesc,
-                'address': inAddress,
-                'city': inCity,
-                'zip_code': inZip,
-                'latitude': inLat,
-                'longitude': inLong
-            },
-            success: function (response) {
+            $("#new-error-msg").css({
+                visibility: "hidden"
+            });
 
-                $("#modal-body").find("input:text").val("");
+            var inTitle = $("#input-title").val();
+            var inDesc = $("#input-desc").val();
+            var inAddress = $("#input-address").val();
+            var inCity = $("#input-city").val();
+            var inZip = $("#input-zip").val();
+            var inLat = $("#input-lat").val();
+            var inLong = $("#input-long").val();
 
-                $.ajax({
-                    method: 'GET',
-                    url: '/getData',
-                    success: function (response) {
-                        showSelectData(response);
-                    },
-                    error: function () {
-                        console.log("get Selected data error");
-                    }
+            $.ajax({
+                method: 'POST',
+                url: '/insertData',
+                data: {
+                    'title': inTitle,
+                    'description': inDesc,
+                    'address': inAddress,
+                    'city': inCity,
+                    'zip_code': inZip,
+                    'latitude': inLat,
+                    'longitude': inLong
+                },
+                success: function (response) {
 
-                });
-            },
-            error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
+                    $("#modal-body").find("input:text").val("");
+                    $("#input-desc").val("");
+                    $.ajax({
+                        method: 'GET',
+                        url: '/getData',
+                        success: function (response) {
+                            showSelectData(response);
+                        },
+                        error: function () {
+                            console.log("get Selected data error");
+                        }
+
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+
+
+            $('#new-service').modal('toggle');
+
+
+        } else {
+            $("#new-error-msg").css({
+                visibility: "visible"
+            });
+        }
 
 
 
     });
 
+    $("#cancel-submit").click(function () {
+
+        $("#new-error-msg").css({
+            visibility: "hidden"
+        });
+
+    });
+
+    $("#cancel-update").click(function () {
+
+        $("#upd-error-msg").css({
+            visibility: "hidden"
+        });
+
+    });
 
     function showSelectData(services) {
         $("#table-body").empty();
@@ -236,6 +282,64 @@
 
             $("#table-body").append(tableRow);
         }
+    }
+
+
+
+    function validateNewServiceEntry() {
+
+        if ($.trim($("#input-title").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#input-desc").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#input-address").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#input-city").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#input-zip").val()) == "") {
+            return false;
+        }
+        if (!$.isNumeric($("#input-lat").val())) {
+            return false;
+        }
+        if (!$.isNumeric($("#input-long").val())) {
+
+        }
+
+        return true;
+
+    }
+
+    function validateUpdateServiceEntry() {
+
+        if ($.trim($("#upd-input-title").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#upd-input-desc").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#upd-input-address").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#upd-input-city").val()) == "") {
+            return false;
+        }
+        if ($.trim($("#upd-input-zip").val()) == "") {
+            return false;
+        }
+        if (!$.isNumeric($("#upd-input-lat").val())) {
+            return false;
+        }
+        if (!$.isNumeric($("#upd-input-long").val())) {
+
+        }
+
+        return true;
+
     }
 
 

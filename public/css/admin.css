@@ -24,3 +24,11 @@
 textarea{
     resize: none;
 }
+#upd-error-msg{
+    float:left;
+    visibility: hidden;
+}
+#new-error-msg{
+    float:left;
+    visibility: hidden;
+}

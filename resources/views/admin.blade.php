@@ -50,13 +50,17 @@
                 <p>Longitude</p>
                 <input type="text" class="form-control" id="input-long">
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="submit-service">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <div class="alert alert-danger fade in" id="new-error-msg">
+                        <strong>Error!</strong> All fields are required and well formated
+                    </div>
+                    <button type="button" class="btn btn-default" id="submit-service">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-submit">Cancel</button>
                 </div>
             </div>
 
         </div>
     </div>
+
 </div>
 
 
@@ -86,8 +90,11 @@
                 <input type="text" class="form-control" id="upd-input-long">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="upd-submit-service">Submit</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <div class="alert alert-danger fade in" id="upd-error-msg">
+                    <strong>Error!</strong> All fields are required and well formated
+                </div>
+                <button type="button" class="btn btn-default" id="upd-submit-service">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-update">Cancel</button>
             </div>
         </div>
     </div>
