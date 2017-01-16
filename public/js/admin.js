@@ -1,7 +1,7 @@
 (function ($) {
 
 
-
+    //When app is loaded
     $(document).ready(function () {
         if ($("#services-div").text() != "NotAdmin") {
 
@@ -71,8 +71,8 @@
         $("#upd-input-title").val($($tds[1]).text());
         $("#upd-input-desc").val($($tds[2]).text());
         $("#upd-input-address").val($($tds[3]).text());
-        $("#upd-input-city").val($($tds[4]).text());
-        $("#upd-input-zip").val($($tds[5]).text());
+        $("#upd-input-zip").val($($tds[4]).text());
+        $("#upd-input-city").val($($tds[5]).text());
         $("#upd-input-lat").val($($tds[6]).text());
         $("#upd-input-long").val($($tds[7]).text());
 
@@ -92,7 +92,6 @@
 
 
             var inId = $("#upd-id").text();
-            console.log(inId)
             var inTitle = $("#upd-input-title").val();
             var inDesc = $("#upd-input-desc").val();
             var inAddress = $("#upd-input-address").val();
@@ -230,7 +229,7 @@
         var i = 0;
         for (i; i < services.length; i++) {
 
-            var tableRow = $("<tr></tr>");
+            var tableRow = $("<tr></tr>",{class:"in-data-tr"});
 
             var id = $("<td></td>", {
                 id: "row-id"
@@ -263,18 +262,26 @@
             var deleteBtn = $("<button></button>", {
                 class: "btn btn-default btn-delete",
                 type: "button"
-            }).text("Del");
-            /*var deleteImg = $("<span></span>", {
-                class: "glyphicon glyphicon-remove"
             });
-            */
-            //deleteBtn.append(deleteImg);
+            var deleteImg = $("<img/>", {
+                src: "icons/delete.png",
+                class:"delete-img"
+            });
 
-            var updateCol = $("<td></td>");
+            deleteBtn.append(deleteImg);
+
+
             var updateBtn = $("<button></button>", {
                 class: "btn btn-default btn-update",
                 type: "button"
-            }).text("Upd");
+            });
+
+            var updateImg = $("<img/>", {
+                src: "icons/edit.png",
+                class:"update-img"
+            });
+
+            updateBtn.append(updateImg);
 
             buttonsCol.append(deleteBtn);
             buttonsCol.append(updateBtn);

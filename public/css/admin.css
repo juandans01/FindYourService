@@ -1,5 +1,34 @@
+body{
+    background-color: #caebf2;
+}
 .btn-update{
     margin-left: 5px;
+    max-height: 50px;
+    max-width: 50px;
+}
+.btn-delete{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.delete-img{
+    max-height: 100%;
+    max-width: 100%;
+}
+.update-img{
+    max-height: 100%;
+    max-width: 100%;
+
+}
+
+
+
+/* By id */
+#navbar-brand{
+    color:black;
+}
+#username{
+    color: black;
 }
 
 #options {
@@ -31,4 +60,17 @@ textarea{
 #new-error-msg{
     float:left;
     visibility: hidden;
+}
+
+#app-navbar{
+    background-color: #ff3b3f;
+}
+
+#table-head{
+    background-color: #a9a9a9;
+    text-decoration-color: whitesmoke;
+    color:white;
+}
+#table-body{
+    background-color: #caebf2;
 }

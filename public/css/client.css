@@ -1,5 +1,6 @@
     body {
-        background-color: #c4e5c1;
+        background-color: #caebf2;
+
     }
     /*By Class*/
 
@@ -16,7 +17,7 @@
 
     #div-search {
         margin-top: 20px;
-        background-color: #0fb6a9;
+        background-color: #ff3b3f;
     }
 
     #div-title {
@@ -32,13 +33,13 @@
     }
 
     #table-body {
-        background-color: #ff6f69;
+        background-color: #efefef;
         font-family: 'Gudea';
         font-size: 20px;
     }
 
     #table-head {
-        background-color: #0fb6a9;
+        background-color: #a9a9a9;
         font-size: 20px;
         font-family: 'Cabin Condensed';
     }
@@ -49,7 +50,7 @@
     }
 
     #client-nav {
-        background-color: #0fb6a9;
+        background-color: #ff3b3f;
         font-family: 'Raleway', sans-serif;
     }
 
