@@ -100,5 +100,29 @@
     </div>
 </div>
 
+<div class="modal fade" id="confirm-delete" role="dialog" aria-labelledby="confirm-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="confirm-label">Confirm delete</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>ID</p>
+                <p id="id-label"></p>
+                <p>You are about to delete one service, this procedure is irreversible.</p>
+                <p>Do you want to proceed?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok" id="confirm-delete-btn">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection

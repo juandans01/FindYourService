@@ -13,49 +13,9 @@
             });
 
             var services = JSON.parse($("#services-div").text());
-            console.log(services);
-
             showSelectData(services);
 
-        } else {
-            console.log(" not admin");
         }
-
-    });
-
-    //Delete row
-    $(document).on("click", ".btn-delete", function () {
-        var row = $(this).closest("tr"),
-            $tds = row.find("td");
-
-        console.log($($tds[0]).text());
-        var inId = $($tds[0]).text();
-
-        $.ajax({
-            method: 'POST',
-            url: '/deleteRow',
-            data: {
-                'id': inId
-            },
-            success: function (response) {
-                $.ajax({
-                    method: 'GET',
-                    url: '/getData',
-                    success: function (response) {
-                        showSelectData(response);
-                    },
-                    error: function () {
-                        console.log("get Selected data error");
-                    }
-
-                });
-            },
-            error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
-
 
     });
 
@@ -82,10 +42,7 @@
 
     //Update row
     $("#upd-submit-service").click(function () {
-        console.log("on click");
         if (validateUpdateServiceEntry()) {
-
-            console.log("pass validate");
             $("#upd-error-msg").css({
                 visibility: "hidden"
             });
@@ -121,8 +78,9 @@
                         success: function (response) {
                             showSelectData(response);
                         },
-                        error: function () {
-                            console.log("get Selected data error");
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(JSON.stringify(jqXHR));
+                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                         }
 
                     });
@@ -135,7 +93,7 @@
 
             $('#update-service').modal('toggle');
 
-        }else {
+        } else {
             $("#upd-error-msg").css({
                 visibility: "visible"
             });
@@ -182,8 +140,9 @@
                         success: function (response) {
                             showSelectData(response);
                         },
-                        error: function () {
-                            console.log("get Selected data error");
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(JSON.stringify(jqXHR));
+                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                         }
 
                     });
@@ -208,6 +167,7 @@
 
     });
 
+    //On submit cancel, hide possible message error
     $("#cancel-submit").click(function () {
 
         $("#new-error-msg").css({
@@ -215,7 +175,7 @@
         });
 
     });
-
+    //On update cancel, hide possible message error
     $("#cancel-update").click(function () {
 
         $("#upd-error-msg").css({
@@ -229,7 +189,9 @@
         var i = 0;
         for (i; i < services.length; i++) {
 
-            var tableRow = $("<tr></tr>",{class:"in-data-tr"});
+            var tableRow = $("<tr></tr>", {
+                class: "in-data-tr"
+            });
 
             var id = $("<td></td>", {
                 id: "row-id"
@@ -263,9 +225,10 @@
                 class: "btn btn-default btn-delete",
                 type: "button"
             });
+
             var deleteImg = $("<img/>", {
                 src: "icons/delete.png",
-                class:"delete-img"
+                class: "delete-img"
             });
 
             deleteBtn.append(deleteImg);
@@ -278,7 +241,7 @@
 
             var updateImg = $("<img/>", {
                 src: "icons/edit.png",
-                class:"update-img"
+                class: "update-img"
             });
 
             updateBtn.append(updateImg);
@@ -348,6 +311,52 @@
         return true;
 
     }
+
+    //Open confirmation of delete modal
+    $(document).on("click", ".btn-delete", function () {
+        //confirm-label
+        var row = $(this).closest("tr"),
+            $tds = row.find("td");
+
+        var inId = $($tds[0]).text();
+
+        $("#id-label").text(inId);
+        $("#confirm-delete").modal("show");
+    });
+
+    //Delete Row
+    $("#confirm-delete-btn").click(function () {
+        var inId = $("#id-label").text();
+        $.ajax({
+            method: 'POST',
+            url: '/deleteRow',
+            data: {
+                'id': inId
+            },
+            success: function (response) {
+                $.ajax({
+                    method: 'GET',
+                    url: '/getData',
+                    success: function (response) {
+                        showSelectData(response);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(JSON.stringify(jqXHR));
+                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+
+                    }
+
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
+
+        $("#confirm-delete").modal("toggle");
+
+    });
 
 
 })(jQuery);

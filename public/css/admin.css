@@ -1,12 +1,14 @@
 body{
     background-color: #caebf2;
 }
+
 .btn-update{
     margin-left: 5px;
     max-height: 50px;
     max-width: 50px;
 }
 .btn-delete{
+    margin-left: 5px;
     max-height: 50px;
     max-width: 50px;
 }
